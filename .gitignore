@@ -1,3 +1,4 @@
-*.json
 
-a.out
+.vscode
+
+**/a.out
