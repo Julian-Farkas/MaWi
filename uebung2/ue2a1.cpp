@@ -5,7 +5,7 @@ int main ()
     // 1.)
     int a = 5;
     int b = 2;
-    int c = b;
+    double c = b;
 
     // 2.)
 
@@ -16,13 +16,13 @@ int main ()
     // 3.)
 
     std::cout << "Wert: " << (a / b / c) 
-    << "\t Typ: Integer" 
+    << "\t Typ: Double" 
     << std::endl;
 
     // 4.)
 
     std::cout << "Wert: " << (a / c / b)
-    << "\t Typ: Integer"
+    << "\t Typ: Double"
     << std::endl;
 
     // 5.)
