@@ -34,7 +34,7 @@ int main()
     //    Variable ifuenf ist falsch geschrieben : Compilerfehler
     
     std::cout << "5.0 <= dvier <= 6.0 " << bool(5.0 <= dvier <= 6.0) << std::endl;
-                // true, da Ausdruck as 5.0 <= dvier || dvier <= 6.0 interpretiert wird.
+                // true, da Ausdruck als 5.0 <= dvier = 0 (false) und dann 0 < 6.0 = 1 (true) ausgewertet wird
 
     return 0;    
 }
