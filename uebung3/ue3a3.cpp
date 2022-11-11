@@ -5,14 +5,23 @@ int main()
     //Schleife für alle Zahlen von 1 bis 500:
     for (int i = 1; i <= 500; ++i)
     {
-        int ones = i % 10;
-        //"schneidet Hunderter- und Zehnerstellen mit % 10 = [0-9] ab"
+        int number = i;     //i darf nicht verändert werden, daher Hilfsvariable
 
-        int tens = i / 10 % 100;
-        //"schneidet Einerstellen mit (ganzzahlig) / 10 und Hunderterstellen mit % ab"
+        do
+        {
+            int squaredDigit = 0; //Hilfsvariable zum Aufsummieren
 
-        int hundreds = i / 100;
-        //"schneidet Einer- und Zehnerstellen mit / 100 (ganzzahlig) ab"
+            do
+            {
+                squaredDigit += (number % 10) * (number % 10);  // quadriert letzte Ziffer
+                number /= 10;                                   //"schneidet" letzte Ziffer ab
+
+            } while (number > 0);                               //bis alle Ziffern abgeschnitten sind   
+            number = squaredDigit;                              //zurück in Nummer geschrieben, falls Abbruchbedingung noch nicht erfüllt ist 
+
+        } while (number != 1 && number != 4);                   //Abbruch, falls 1 (glücklich) oder 4(Glied der ungl. Zahlenfolge) erkannt wird
+
+        if (number == 1) std::cout << i << std::endl;           // Wenn Glücklich, dann wird untersuchte Zahl ausgegeben
     }
 
     return 0;
