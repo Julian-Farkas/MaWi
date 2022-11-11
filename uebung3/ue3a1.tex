@@ -1,8 +1,54 @@
 \documentclass{article}
+\usepackage{array}
 
 \begin{document}
 
-\section*{Übung 1}
-    \subsection*{Aufgabe 1:}
+\section*{\underline{Übung 1}}
+    \subsubsection*{Aufgabe 1:}
+
+    Betrachten wir die verschiedenen \emph{k} in der äußeren Schleife:
+    \begin{itemize}
+        \item $k = 0$: \newline
+        In jeder \textbf{i}-ten Spalte wird \emph{'X'} ausgegeben, da der Variable \textbf{c} standardmäßig der Wert 'X' zugewiesen wird.
+        Anschließend wird nur der Code im \emph{case 0} ausgeführt, welcher \textbf{b} auf \textit{true} setzt und so im folgenden \emph{if-Statement} den Inhalt von \textbf{c} in die Konsole schreibt.
+        \item $k = 1$: \newline
+        Hier betrachtet der Computer nur den \emph{case 1}, welcher dafür sorgt, dass \textbf{c} und damit \emph{'X'} ausgegeben wird, wenn $i > 3$ ist.
+        Ansonsten wird ein \emph{'.'} in die Konsole geschrieben, also der \emph{else}-Fall ausgelöst.
+        \item $k = 2$: \newline
+        In \emph{case 2} ist \textbf{b} genau dann wahr, wenn \textbf{i} gerade ist (\textit{(i \% 2) == 0}), und es wird nur dann wieder ein \emph{'X'} ausgegeben,
+        sonst ein \emph{'.'} . Jedoch wird durch \emph{if($i < 3$) c = 'O'} ab Spalte 3 ein \emph{'O'} statt des \emph{'X'} ausgegeben.
+        \item $k = 3$: \newline
+        Nun müsste \emph{case 3} betrachtet werden, allerdings ist im Code kein solcher Fall angegeben. Deswegen betrachten wir den \emph{default}-Block:
+        In diesem wird \textbf{c} mit \emph{'O'} überschrieben und \textbf{b} nur dann auf \emph{true} gesetzt, wenn \textbf{i} $< 3$ ist, \underline{und} (\&\&)
+        \textbf{i} \underline{entweder} kleiner als 1 oder größer oder gleich 2 ist (\textit{($i < 1 || i \geq 2$)}).
+        \item $k = 4$: \newline
+        Die letzte Zeile wird im \emph{case 4} behandelt: Hier wird wie in \emph{default} c \emph{'O'} zugewiesen. Da in diesem \emph{case} jedoch kein \textit{break;} vorhanden
+        ist, springt er in den darunter liegenden \emph{case 0}, was dafür sorgt, dass \textbf{b} nun für diesen Schleifendurchlauf dauerhaft \emph{true} ist, und so
+        in der letzten Zeile nur \emph{'O'} ausgegeben wird.
+    \end{itemize}
+
+    \begin{center}
+
+    \large
+        \begin{tabular}{| m{.35cm} | m{.35cm} | m{.35cm} | m{.35cm} | m{.35cm} | m{.35cm} | m{.35cm} |}
+
+            \hline
+            & k & 0 & 1 & 2 & 3 & 4 \\
+            \hline
+            i & &  &  &  &  &  \\
+            \hline
+            0 & & X & X & X & X & X \\
+            \hline
+            1 & & . & . & . & X & X \\
+            \hline
+            2 & & X & . & X & . & O \\
+            \hline
+            3 & & 1 & 1 & 1 & 1 & 1 \\
+            \hline
+            4 & & 1 & 1 & 1 & 1 & 1 \\
+            \hline
+        
+    \end{tabular}
+    \end{center}
 
 \end{document}
