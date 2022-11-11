@@ -20,7 +20,7 @@
         \item $k = 3$: \newline
         Nun müsste \emph{case 3} betrachtet werden, allerdings ist im Code kein solcher Fall angegeben. Deswegen betrachten wir den \emph{default}-Block:
         In diesem wird \textbf{c} mit \emph{'O'} überschrieben und \textbf{b} nur dann auf \emph{true} gesetzt, wenn \textbf{i} $< 3$ ist, \underline{und} (\&\&)
-        \textbf{i} \underline{entweder} kleiner als 1 oder größer oder gleich 2 ist (\textit{($i < 1 || i \geq 2$)}).
+        \textbf{i} \underline{entweder} kleiner als 1 oder größer oder gleich 2 (\textit{($i < 1 || i \geq 2$)}), also $i \neq 1$ ist.
         \item $k = 4$: \newline
         Die letzte Zeile wird im \emph{case 4} behandelt: Hier wird wie in \emph{default} c \emph{'O'} zugewiesen. Da in diesem \emph{case} jedoch kein \textit{break;} vorhanden
         ist, springt er in den darunter liegenden \emph{case 0}, was dafür sorgt, dass \textbf{b} nun für diesen Schleifendurchlauf dauerhaft \emph{true} ist, und so
