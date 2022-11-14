@@ -14,15 +14,15 @@ compile_and_execute () {
 }
 
 #check if file exists:
-if [ -e $1 ]
+if [[ "$1" == *.cpp ]]
 then
     #check if file has .cpp-extention:
-    if [[ "$1" == *.cpp ]]
+    if [ -e $1 ]
     then
         compile_and_execute "$1"
     else
-        echo -e "\n\e[7;31mFehler:\e[0;31m Die angegebene Datei \"$1\" ist keine *.cpp!\e[0m\n"
+        echo -e "\n\e[7;31mFehler:\e[0;31m Die angegebene Datei \"$1\" wurde nicht gefunden!\n\tMoeglicherweise wurde der Name falsch geschrieben.\e[0m\n"
     fi
 else
-    echo -e "\n\e[7;31mFehler:\e[0;31m Die angegebene Datei \"$1\" wurde nicht gefunden!\e[0m\n"
+    echo -e "\n\e[7;31mFehler:\e[0;31m Die angegebene Datei \"$1\" ist keine *.cpp!\e[0m\n"
 fi
