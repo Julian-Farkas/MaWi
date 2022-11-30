@@ -22,7 +22,7 @@ int main ()
 
     if (binary > 0)
     {
-        std::cerr << "Fehler: Nur die ziffern 0 und 1 sind zulaessig!" << std::endl;
+        std::cerr << "Fehler: Nur die Ziffern 0 und 1 sind zulaessig!" << std::endl;
         exitCode = 1;
     }
     else
