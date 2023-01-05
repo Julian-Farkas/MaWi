@@ -1,6 +1,6 @@
 #include <iostream>
 
-void quer(int& summe, int& produkt)
+void quer(int& summe, int& produkt) //summe und produkt wird als Referenzen mitgegeben, da 2 versch. Rückgaben erwartet werden
 {
     //da + und * assoziativ, ist es egal, ob man vorne oder hinten anfängt
 
