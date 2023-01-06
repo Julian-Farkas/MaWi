@@ -6,6 +6,7 @@
 
 # Unignore certain extensions
 !*.cpp
+!*.hpp
 
 !*.sh
 
