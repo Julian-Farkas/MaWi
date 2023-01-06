@@ -1,14 +1,16 @@
-# grundlegend alles ignorieren:
+# Ignore all
 *
 
-#Außnahmen:
-!**/*.cpp
+# Unignore all dirs
+!*/
 
-!**/*.sh
+# Unignore certain extensions
+!*.cpp
 
-!**/*.tex
-!**/*.pdf
+!*.sh
 
-!**/*.md
+!*.tex
+!*.pdf
 
+!*.md
 !.gitignore
