@@ -5,7 +5,7 @@ std::string cut_escape_secquence (std::string str)
 {
     std::string result = "";
 
-    for (int i = 0; i < str.length(); ++i)
+    for (size_t i = 0; i < str.length(); ++i)
     {
         //falls wir eine Leerzeile, newline oder tab finden...
         if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n') 
