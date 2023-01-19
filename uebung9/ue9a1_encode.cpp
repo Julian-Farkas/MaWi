@@ -39,7 +39,7 @@ int main()
 
     do
     {
-        std::cout << "Bitte geben Sie eine der umzuwandelnden Mailadressen an (leere Eingabe startet die Umwandlung): " << std::endl;
+        std::cout << "Bitte geben Sie eine der umzuwandelnden Mailadressen an (leere Eingabe startet die Ausgabe): " << std::endl;
         std::getline(std::cin, input);
 
         if (input != "") output.push_back( encode_mail_adress(input) );
