@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+
+\begin{document}
+
+\section*{Übung 10 Lösung}
+
+    \subsection*{Aufgabe 2}
+
+    \begin{enumerate}[label=(\alph*)]
+
+        \item Die Funktion uberpüft, ob das Produkt zweier Vektorelemente gleich der Summe aller Elemente ist:
+	\newline\newline
+	Die erste \textit{for-Schleife} addiert alle Elemente des Vektors, daher hat dieser Abschnitt eine Laufzeit von \textbf{n}.
+	Als nächstes wird erneut  der Vektor durchlaufen, und dies zwei Mal (ersichtlich an den Iteratorvariablen \textit{i} und \textit{j}.
+	Innerhalb dieser 2 Schleifen wird nun geschaut, ob das Produkt der zwei Einträge \textit{v[i]} und \textit{v[j]} gleich der in der vorherigen Schleife errrechneten
+	Summe ist. Wurden diese 2 Einträge gefunden, so brechen die 2 Schleifen ab und die Funktion gibt \textit{true} zurück, andernfalls haben die zwei Schleifen
+	eine Laufzeit von \textbf{n²}.
+
+	Dieser Algorithmus terminiert also spätestens nach n²+n Schleifendurchäufen und hat damit eine Laufzeit von $n^{2}+n \in O(n^{2})$, jedoch 
+	ist der Algorithmus nicht
+	korrekt, da in den beiden Schleifen nicht geprüft wird, ob\newline \textit{v[i]} == \textit{v[j]}
+	ist, sprich, ob ein Vektorelement mit sich selbst multipliziert wird.  
+	
+
+    \end{enumerate}
+
+\end{document}
