@@ -2,6 +2,11 @@
 #include <vector>
 #include <cstdlib>
 
+/*  Die Funktion selectionSort kann man alternativ auch mit dem Maximum implementieren, indem man im Folgenden
+**  die Schleifenvariablen von vec.size()-1 bis 0 laufen lässt und schaut, ob das aktuell größte Element
+**  kleiner als das vec[j].te ist.
+*/
+
 void selectionSort (std::vector<double> &vec)
 {
     double min = 1.0; //oder auch vec[n], verbessert Laufzeit, wenn var außerhalb von loop deklariert.
