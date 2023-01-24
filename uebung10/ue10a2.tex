@@ -41,7 +41,20 @@
 
 		\item Die Funktion berechnet die Summe der Elemente an den Index-Positionen, die eine Zweierpotenz
 		sind: $2^0, 2^1, 2^2, 2^3, ...$ (sofern dies ein gultiger Index, also kleiner als die Länge des Vektors ist)
+		\newline\newline
+		Weil die \textit{for-Schleife} lediglich Index-Positionen abruft, welche eine Zweierpotenz ist, terminiert der Algorithmus spätestens nach $0(\log_2(n))$ Schritten.
+		Allerdings ist der Algorithmus fehlerhaft, da die Einträge von Vektoren mit 0 (v[0]) und nicht 1 (v[1]) beginnen. Zudem müsste i mit i = 1 initalisiert werden, um den $2^0$.ten Eintrag
+		zu addieren; es müsste also \textit{sum += v[i - 1]} in der 8. Zeile stehen.
 
+		\item  Die Funktion bestimmt die Menge aller Teilmengen der n Elemente im Vektor v (Beispiel: v=\{1,2,3\} $\Rightarrow$  \{ \{\},\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\} \})
+		\newline\newline
+		Da die Potenzmenge $\mathcal{P}(v)$ gebildet wird, werden $(2^n) - 1$ Elemente erzeugt, was eine gleiche Laufzeit von $2^n \in O(2^n)$ zur Folge hat, was man bei der Betrachtung des Algorithmus
+		nachvollziehen kann:\newline
+		Zu Beginn wird die leere Menge zu \textit{subsets} hinzugefügt, was zur Folge hat, dass in der inneren \textit{for-Schleife} das 1. Element des Vektors \emph{v} als Teilmenge hinzugefügt wird.
+		Im nächsten äußeren Schleifendurchlauf \newline( i = 1 ) ist die \emph{subset.size()} nun 2, d.h. die innere Schleife wird 2 mal durchlaufen, wobei die j-te Teilmenge durch 
+		\emph{single\_set = subsets[j]} (also single\_set = \{\} im ersten Durchlauf und single\_set = \{1\}) in \emph{single\_set} geschrieben wird, bevor der \emph{i-te} Eintrag (2) in \emph{v}
+		hinzugefügt und das \emph{single\_set} dem \emph{subsets} hinzugefügt wird.
+		Für die nächsten Einträge läuft der Algorithmus analog.   
 
     \end{enumerate}
 
