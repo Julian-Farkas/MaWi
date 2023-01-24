@@ -11,18 +11,37 @@
     \begin{enumerate}[label=(\alph*)]
 
         \item Die Funktion uberpüft, ob das Produkt zweier Vektorelemente gleich der Summe aller Elemente ist:
-	\newline\newline
-	Die erste \textit{for-Schleife} addiert alle Elemente des Vektors, daher hat dieser Abschnitt eine Laufzeit von \textbf{n}.
-	Als nächstes wird erneut  der Vektor durchlaufen, und dies zwei Mal (ersichtlich an den Iteratorvariablen \textit{i} und \textit{j}.
-	Innerhalb dieser 2 Schleifen wird nun geschaut, ob das Produkt der zwei Einträge \textit{v[i]} und \textit{v[j]} gleich der in der vorherigen Schleife errrechneten
-	Summe ist. Wurden diese 2 Einträge gefunden, so brechen die 2 Schleifen ab und die Funktion gibt \textit{true} zurück, andernfalls haben die zwei Schleifen
-	eine Laufzeit von \textbf{n²}.
+		\newline\newline
+		Die erste \textit{for-Schleife} addiert alle Elemente des Vektors, daher hat dieser Abschnitt eine Laufzeit von \textbf{n}.
+		Als nächstes wird erneut  der Vektor durchlaufen, und dies zwei Mal (ersichtlich an den Iteratorvariablen \textit{i} und \textit{j}.
+		Innerhalb dieser 2 Schleifen wird nun geschaut, ob das Produkt der zwei Einträge \textit{v[i]} und \textit{v[j]} gleich der in der vorherigen Schleife errrechneten
+		Summe ist. Wurden diese 2 Einträge gefunden, so brechen die 2 Schleifen ab und die Funktion gibt \textit{true} zurück, andernfalls haben die zwei Schleifen
+		eine Laufzeit von \textbf{n²}.
 
-	Dieser Algorithmus terminiert also spätestens nach n²+n Schleifendurchäufen und hat damit eine Laufzeit von $n^{2}+n \in O(n^{2})$, jedoch 
-	ist der Algorithmus nicht
-	korrekt, da in den beiden Schleifen nicht geprüft wird, ob\newline \textit{v[i]} == \textit{v[j]}
-	ist, sprich, ob ein Vektorelement mit sich selbst multipliziert wird.  
+		Dieser Algorithmus terminiert also spätestens nach n²+n Schleifendurchäufen und hat damit eine Laufzeit von $n^{2}+n \in O(n^{2})$, jedoch 
+		ist der Algorithmus nicht
+		korrekt, da in den beiden Schleifen nicht geprüft wird, ob\newline \textit{v[i]} == \textit{v[j]}
+		ist, sprich, ob ein Vektorelement mit sich selbst multipliziert wird.
 	
+		\item  Die Funktion addiert die Elemente an geraden (even) Index-Positionen in sum\_even\_odd[0] und
+		die Elemente an ungeraden (odd) Index-Positionen in sum\_even\_odd[1]:
+		\newline\newline
+		Zu Beginn wird ein Vektor mit 2 Einträgen, welche mit 0 initialisiert werden, erstellt. Für die Bestimmung der Laufzeit ist dieser Befehl uninteressant.
+		Als nächstes folgen 2 \textit{for-Schleifen}, wobei der Iterator \textbf{i} der äußeren Schleife die Werte 0 und 1 annimmt. In der inneren Schleife wird der Iterator \textbf{j}
+		immer um 2 erhöht, was zur Folge hat, dass im 1. äußeren Schleifendurchlauf zunächst alle geraden Einträge durch v[i + j] (also v[ 0 + j]) addiert werden (i = 0) und im 2. 
+		Durchlauf (i = 1) alle ungeraden Einträge (v[1 + j]) miteinander addiert werden.
+
+		Der Algorithmus funktioniert gemäß seiner Beschreibung und hat eine Laufzeit (terminiert spätestens in) von $2 \cdot \frac{n}{2} \in O(n)$.
+
+		\item Die Funktion hangt für jedes Element im Vektor die Zahl mit umgedrehten Vorzeichen an:
+		\newline\newline
+		Interessant an diesem Algorithmus ist, dass die Abbruchbedingung das Ende des Vektors ist, diese aber nicht vorher in einer seperaten Variable festgehalten wird, sondern sich
+		nach jedem Schleifendurchlauf neu berechnet, was zur Folge hat, dass dieser Algorithmus nicht terminieren kann, da mit jedem Schleifenduchlauf der Vektor größer wird und das Ende
+		nie erreicht werden kann.
+
+		\item Die Funktion berechnet die Summe der Elemente an den Index-Positionen, die eine Zweierpotenz
+		sind: $2^0, 2^1, 2^2, 2^3, ...$ (sofern dies ein gultiger Index, also kleiner als die Länge des Vektors ist)
+
 
     \end{enumerate}
 
