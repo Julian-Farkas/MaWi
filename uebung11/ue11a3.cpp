@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-//nimmt Zahl und fügt Ziffer für Ziffer die benötigten zeichen dem Vektor hinzu:
+//nimmt Ziffer und fügt die benötigten Zeichen dem Vektor hinzu:
 void digit_to_display (unsigned int digit, std::vector< std::vector<std::string> > &display)
 {
     switch (digit)
@@ -87,6 +87,35 @@ void digit_to_display (unsigned int digit, std::vector< std::vector<std::string>
         display[4].push_back(" __| ");
         break;
     }
+
+    return;
+}
+
+//nimmt Nummer und wandelt sie mit Hilfsfunktion zu Zeichenfolge in 7-Segmentanzeige um:
+void number_to_display (unsigned int number, std::vector< std::vector<std::string> > &display)
+{
+    //edge-case, wenn nur einstellig inkl "0" als Input:
+    if (number < 10)
+    {
+        digit_to_display(number, display);
+        return;
+    }
+
+    unsigned int reversed = 0; 
+
+    while (number > 0)
+    {
+        reversed *= 10;
+        reversed += number % 10;
+        number /= 10;
+    }
+
+    for (/*reversed*/; reversed > 0; reversed /= 10)
+    {
+        digit_to_display(reversed % 10, display);
+    }
+
+    return;
 }
 
 void print_display (std::vector< std::vector<std::string> > &display)
