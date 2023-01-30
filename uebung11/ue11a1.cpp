@@ -11,18 +11,19 @@ std::string remove_hyphens (std::string str)
     return buffer;
 }
 
-void add_checksum (std::string &isbn)
+char calculate_checksum (std::string &isbn)
 {
     //string zu int durch stream konvertieren:
     std::istringstream isstream( remove_hyphens(isbn) );
-    
+
     int num = 0;
     isstream >> num;
 
-    if (isstream.fail())
+    //Nichtziffernzeichen (noch) im Stream
+    if (isstream.fail() || !isstream.eof())
     {
         isbn = "Uebergebene ISBN enthaelt nichtnumerische Zeichen!";
-        return;
+        return 0; //  char 'NUL'
     }
 
     //Prüfziffer berechnen:
@@ -35,28 +36,72 @@ void add_checksum (std::string &isbn)
         num /= 10;   // "benutzte" Ziffer entfernen
     }
 
+    //Berechnung der Prüfziffer:
     sum = 11 - ( sum % 11 );
 
+    //Fall, dass Prüfziffer 10 wäre:
+    if (sum == 10) return 'X';
+
+    return '0' + sum; //ostringstream wäre overkill
+}
+
+void add_checksum (std::string &isbn)
+{
+    
+    char checksum = calculate_checksum(isbn);
+
     //Prüfziffer der ISBN anhängen:
-    std::ostringstream osstream; //isbn in ostream "packen"
+    std::ostringstream osstream; 
 
-    sum == 1 ? osstream << isbn << "-X" : osstream << isbn << '-' << sum;
+    //isbn in ostream "packen"
+    osstream << isbn;
 
+    //wenn korrekte ISBN eingegeben wurde: 
+    if (checksum != 0) osstream << '-' << checksum;
+
+    //Inhalt des Streams in isbn speichern
     isbn = osstream.str();
 
     return;
 }
 
-bool check_checksum (const std::string& isbn)
+bool check_checksum (std::string isbn)
 {
-        
+    char reference = isbn[isbn.length() - 1]; //letzte Ziffer 0-9, X speichern
+    isbn.pop_back(); //Prüfziffer entfernen
+
+    char checksum = calculate_checksum(isbn);
+
+    //falls ungleich ODER Nutzer als letztes Zeichen NULL als reference in Eingabe reingemogelt hat:
+    if (checksum == 0 || checksum != reference) return 0;
+    
+    return true;
 }
 
 int main()
 {
-    std::string str = "3-540-55943";
-    add_checksum(str);
-    bool check1 = check_checksum(str), check2 = check_checksum("3-540-55943-X");
-    std::cout << str << check1 << check2 << std::endl;
+
+    // Zum Prüfen von 'X' ISBN: 3-442-46093  bzw.  3-442-46093-X
+
+    std::cout << "Bitte geben Sie die unvollstaendige ISBN an:\t";
+    std::cout.flush();
+    
+    std::string isbn = "";
+    std::cin >> isbn;
+    add_checksum(isbn);
+
+    std::cout << "Bitte geben Sie die zu pruefende ISBN an:\t";
+    std::cout.flush();
+
+    std::string isbnCheck = "";
+    std::cin >> isbnCheck;
+
+    std::cout << "Die vollstaendige ISBN lautet " << isbn << std::endl;
+    
+    std::cout << "Die Pruefziffer der angegebene ISBN " << isbnCheck << " ist ";
+    
+    if ( !check_checksum(isbnCheck) ) std::cout << "nicht ";
+    std::cout << "korrekt." << std::endl;
+
     return 0;
 }
